@@ -1,18 +1,17 @@
 trigger:
 - main
 
-pool:
-  name: selfhostedvm
+pool: Default
 
 steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.10'
-
 - script: |
-        python -m venv antenv
-        source antenv/bin/activate
-        python -m pip install --upgrade pip
-        pip install setuptools
-        pip install -r requirements.txt
-  displayName: "Install requirements"
+    python3 --version
+    python3 -m pip --version
+
+    python3 -m venv antenv
+    source antenv/bin/activate
+
+    python -m pip install --upgrade pip
+    pip install setuptools
+    pip install -r requirements.txt
+  displayName: "Install Python dependencies"
